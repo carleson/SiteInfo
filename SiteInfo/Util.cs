@@ -1,10 +1,8 @@
 ﻿/*
  * Created by SharpDevelop.
- * User: a491259
+ * User: Carleson
  * Date: 2013-06-18
  * Time: 11:11
- * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
 using System.Windows.Forms;

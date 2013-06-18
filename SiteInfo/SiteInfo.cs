@@ -3,9 +3,8 @@
  * User: Carleson
  * Date: 2013-06-18
  * Time: 10:40
- * 
- * 
  */
+
 using System;
 
 namespace SiteInfo
