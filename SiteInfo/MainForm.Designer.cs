@@ -71,37 +71,41 @@ namespace SiteInfo
 			// 
 			// txtURL
 			// 
-			this.txtURL.Location = new System.Drawing.Point(84, 37);
+			this.txtURL.Location = new System.Drawing.Point(63, 30);
+			this.txtURL.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.txtURL.Name = "txtURL";
-			this.txtURL.Size = new System.Drawing.Size(424, 22);
+			this.txtURL.Size = new System.Drawing.Size(319, 20);
 			this.txtURL.TabIndex = 0;
 			this.txtURL.Text = "http://www.sunet.se";
 			this.txtURL.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtURLKeyPress);
 			// 
 			// label1
 			// 
-			this.label1.Location = new System.Drawing.Point(29, 40);
+			this.label1.Location = new System.Drawing.Point(22, 32);
+			this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(49, 23);
+			this.label1.Size = new System.Drawing.Size(37, 19);
 			this.label1.TabIndex = 1;
 			this.label1.Text = "URL:";
 			// 
 			// txtOutput
 			// 
 			this.txtOutput.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.txtOutput.Location = new System.Drawing.Point(3, 3);
+			this.txtOutput.Location = new System.Drawing.Point(2, 2);
+			this.txtOutput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.txtOutput.Multiline = true;
 			this.txtOutput.Name = "txtOutput";
 			this.txtOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.txtOutput.Size = new System.Drawing.Size(950, 420);
+			this.txtOutput.Size = new System.Drawing.Size(711, 340);
 			this.txtOutput.TabIndex = 2;
 			this.txtOutput.DoubleClick += new System.EventHandler(this.TxtOutputDoubleClick);
 			// 
 			// btnCheck
 			// 
-			this.btnCheck.Location = new System.Drawing.Point(418, 65);
+			this.btnCheck.Location = new System.Drawing.Point(314, 53);
+			this.btnCheck.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.btnCheck.Name = "btnCheck";
-			this.btnCheck.Size = new System.Drawing.Size(90, 28);
+			this.btnCheck.Size = new System.Drawing.Size(68, 23);
 			this.btnCheck.TabIndex = 3;
 			this.btnCheck.Text = "&Check";
 			this.btnCheck.UseVisualStyleBackColor = true;
@@ -113,9 +117,11 @@ namespace SiteInfo
 			this.groupBox1.Controls.Add(this.btnCheck);
 			this.groupBox1.Controls.Add(this.label1);
 			this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-			this.groupBox1.Location = new System.Drawing.Point(0, 28);
+			this.groupBox1.Location = new System.Drawing.Point(0, 24);
+			this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(964, 124);
+			this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.groupBox1.Size = new System.Drawing.Size(723, 101);
 			this.groupBox1.TabIndex = 4;
 			this.groupBox1.TabStop = false;
 			// 
@@ -125,7 +131,8 @@ namespace SiteInfo
 									this.fileToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(964, 28);
+			this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+			this.menuStrip1.Size = new System.Drawing.Size(723, 24);
 			this.menuStrip1.TabIndex = 5;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -139,40 +146,40 @@ namespace SiteInfo
 									this.checkToolStripMenuItem,
 									this.quitToolStripMenuItem});
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-			this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
+			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
 			this.fileToolStripMenuItem.Text = "&File";
 			// 
 			// LoadToolStripMenuItem
 			// 
 			this.LoadToolStripMenuItem.Name = "LoadToolStripMenuItem";
 			this.LoadToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-			this.LoadToolStripMenuItem.Size = new System.Drawing.Size(173, 24);
+			this.LoadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.LoadToolStripMenuItem.Text = "Load...";
 			this.LoadToolStripMenuItem.Click += new System.EventHandler(this.LoadToolStripMenuItemClick);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(170, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
 			// 
 			// SaveToolStripMenuItem
 			// 
 			this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
 			this.SaveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-			this.SaveToolStripMenuItem.Size = new System.Drawing.Size(173, 24);
+			this.SaveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.SaveToolStripMenuItem.Text = "Save";
 			this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItemClick);
 			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(170, 6);
+			this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
 			// 
 			// checkToolStripMenuItem
 			// 
 			this.checkToolStripMenuItem.Name = "checkToolStripMenuItem";
 			this.checkToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-			this.checkToolStripMenuItem.Size = new System.Drawing.Size(173, 24);
+			this.checkToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.checkToolStripMenuItem.Text = "&Check";
 			this.checkToolStripMenuItem.Click += new System.EventHandler(this.CheckToolStripMenuItemClick);
 			// 
@@ -180,7 +187,7 @@ namespace SiteInfo
 			// 
 			this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
 			this.quitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-			this.quitToolStripMenuItem.Size = new System.Drawing.Size(173, 24);
+			this.quitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.quitToolStripMenuItem.Text = "&Quit";
 			this.quitToolStripMenuItem.Click += new System.EventHandler(this.QuitToolStripMenuItemClick);
 			// 
@@ -189,9 +196,10 @@ namespace SiteInfo
 			this.statusFooter.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
 									this.toolStripStatus,
 									this.toolStripProgress});
-			this.statusFooter.Location = new System.Drawing.Point(0, 616);
+			this.statusFooter.Location = new System.Drawing.Point(0, 499);
 			this.statusFooter.Name = "statusFooter";
-			this.statusFooter.Size = new System.Drawing.Size(964, 25);
+			this.statusFooter.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
+			this.statusFooter.Size = new System.Drawing.Size(723, 22);
 			this.statusFooter.TabIndex = 4;
 			this.statusFooter.Text = "status";
 			// 
@@ -199,35 +207,40 @@ namespace SiteInfo
 			// 
 			this.toolStripStatus.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.toolStripStatus.Name = "toolStripStatus";
-			this.toolStripStatus.Size = new System.Drawing.Size(136, 20);
+			this.toolStripStatus.Size = new System.Drawing.Size(106, 17);
 			this.toolStripStatus.Text = "SiteInfo XXXXXXXX";
 			// 
 			// toolStripProgress
 			// 
 			this.toolStripProgress.Name = "toolStripProgress";
-			this.toolStripProgress.Size = new System.Drawing.Size(65, 20);
+			this.toolStripProgress.Size = new System.Drawing.Size(52, 17);
 			this.toolStripProgress.Text = "Progress";
 			// 
 			// tabControl1
 			// 
+			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+									| System.Windows.Forms.AnchorStyles.Left) 
+									| System.Windows.Forms.AnchorStyles.Right)));
 			this.tabControl1.Controls.Add(this.tabPageSource);
 			this.tabControl1.Controls.Add(this.tabPageAnalyze);
 			this.tabControl1.Controls.Add(this.tabPageStats);
 			this.tabControl1.Controls.Add(this.tabPageLinks);
 			this.tabControl1.Controls.Add(this.tabPageOptions);
-			this.tabControl1.Location = new System.Drawing.Point(0, 158);
+			this.tabControl1.Location = new System.Drawing.Point(0, 128);
+			this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(964, 455);
+			this.tabControl1.Size = new System.Drawing.Size(723, 370);
 			this.tabControl1.TabIndex = 6;
 			// 
 			// tabPageSource
 			// 
 			this.tabPageSource.Controls.Add(this.txtOutput);
-			this.tabPageSource.Location = new System.Drawing.Point(4, 25);
+			this.tabPageSource.Location = new System.Drawing.Point(4, 22);
+			this.tabPageSource.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.tabPageSource.Name = "tabPageSource";
-			this.tabPageSource.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageSource.Size = new System.Drawing.Size(956, 426);
+			this.tabPageSource.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.tabPageSource.Size = new System.Drawing.Size(715, 344);
 			this.tabPageSource.TabIndex = 0;
 			this.tabPageSource.Text = "Source";
 			this.tabPageSource.UseVisualStyleBackColor = true;
@@ -235,10 +248,11 @@ namespace SiteInfo
 			// tabPageAnalyze
 			// 
 			this.tabPageAnalyze.Controls.Add(this.txtAnalyze);
-			this.tabPageAnalyze.Location = new System.Drawing.Point(4, 25);
+			this.tabPageAnalyze.Location = new System.Drawing.Point(4, 22);
+			this.tabPageAnalyze.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.tabPageAnalyze.Name = "tabPageAnalyze";
-			this.tabPageAnalyze.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageAnalyze.Size = new System.Drawing.Size(956, 426);
+			this.tabPageAnalyze.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.tabPageAnalyze.Size = new System.Drawing.Size(715, 344);
 			this.tabPageAnalyze.TabIndex = 1;
 			this.tabPageAnalyze.Text = "Analyze";
 			this.tabPageAnalyze.UseVisualStyleBackColor = true;
@@ -246,20 +260,22 @@ namespace SiteInfo
 			// txtAnalyze
 			// 
 			this.txtAnalyze.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.txtAnalyze.Location = new System.Drawing.Point(3, 3);
+			this.txtAnalyze.Location = new System.Drawing.Point(2, 2);
+			this.txtAnalyze.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.txtAnalyze.Multiline = true;
 			this.txtAnalyze.Name = "txtAnalyze";
 			this.txtAnalyze.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.txtAnalyze.Size = new System.Drawing.Size(950, 420);
+			this.txtAnalyze.Size = new System.Drawing.Size(714, 342);
 			this.txtAnalyze.TabIndex = 0;
 			this.txtAnalyze.TextChanged += new System.EventHandler(this.TxtAnalyzeTextChanged);
 			// 
 			// tabPageStats
 			// 
 			this.tabPageStats.Controls.Add(this.textStats);
-			this.tabPageStats.Location = new System.Drawing.Point(4, 25);
+			this.tabPageStats.Location = new System.Drawing.Point(4, 22);
+			this.tabPageStats.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.tabPageStats.Name = "tabPageStats";
-			this.tabPageStats.Size = new System.Drawing.Size(956, 426);
+			this.tabPageStats.Size = new System.Drawing.Size(715, 344);
 			this.tabPageStats.TabIndex = 2;
 			this.tabPageStats.Text = "Stats";
 			this.tabPageStats.UseVisualStyleBackColor = true;
@@ -269,42 +285,46 @@ namespace SiteInfo
 			this.textStats.AcceptsReturn = true;
 			this.textStats.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.textStats.Location = new System.Drawing.Point(0, 0);
+			this.textStats.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.textStats.Multiline = true;
 			this.textStats.Name = "textStats";
 			this.textStats.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.textStats.Size = new System.Drawing.Size(956, 426);
+			this.textStats.Size = new System.Drawing.Size(718, 347);
 			this.textStats.TabIndex = 0;
 			this.textStats.TextChanged += new System.EventHandler(this.TextStatsTextChanged);
 			// 
 			// tabPageLinks
 			// 
-			this.tabPageLinks.Location = new System.Drawing.Point(4, 25);
+			this.tabPageLinks.Location = new System.Drawing.Point(4, 22);
+			this.tabPageLinks.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.tabPageLinks.Name = "tabPageLinks";
-			this.tabPageLinks.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageLinks.Size = new System.Drawing.Size(956, 426);
+			this.tabPageLinks.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.tabPageLinks.Size = new System.Drawing.Size(715, 344);
 			this.tabPageLinks.TabIndex = 3;
 			this.tabPageLinks.Text = "Links";
 			this.tabPageLinks.UseVisualStyleBackColor = true;
 			// 
 			// tabPageOptions
 			// 
-			this.tabPageOptions.Location = new System.Drawing.Point(4, 25);
+			this.tabPageOptions.Location = new System.Drawing.Point(4, 22);
+			this.tabPageOptions.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.tabPageOptions.Name = "tabPageOptions";
-			this.tabPageOptions.Size = new System.Drawing.Size(956, 426);
+			this.tabPageOptions.Size = new System.Drawing.Size(715, 344);
 			this.tabPageOptions.TabIndex = 4;
 			this.tabPageOptions.Text = "Options";
 			this.tabPageOptions.UseVisualStyleBackColor = true;
 			// 
 			// MainForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(964, 641);
+			this.ClientSize = new System.Drawing.Size(723, 521);
 			this.Controls.Add(this.tabControl1);
 			this.Controls.Add(this.statusFooter);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.menuStrip1);
 			this.MainMenuStrip = this.menuStrip1;
+			this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.Name = "MainForm";
 			this.Text = "SiteInfo";
 			this.groupBox1.ResumeLayout(false);
