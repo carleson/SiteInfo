@@ -53,6 +53,8 @@ namespace SiteInfo
 			dgvLinks.AutoGenerateColumns = false;
 		
 		    DataGridViewCell cell = new DataGridViewTextBoxCell();
+		    DataGridViewCell linkcell = new DataGridViewLinkCell();
+		    
 		    DataGridViewTextBoxColumn colLink = new DataGridViewTextBoxColumn()
 		    {
 		        CellTemplate = cell, 
@@ -73,9 +75,9 @@ namespace SiteInfo
 		
 		    dgvLinks.Columns.Add(colDescription);
 		    
-		    DataGridViewTextBoxColumn colUrl = new DataGridViewTextBoxColumn()
+		    DataGridViewLinkColumn colUrl = new DataGridViewLinkColumn
 		    {
-		        CellTemplate = cell, 
+		        CellTemplate = linkcell, 
 		        Name = "Url",
 		        HeaderText = "Url",
 		        DataPropertyName = "Url" 
