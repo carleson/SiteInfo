@@ -22,9 +22,9 @@ namespace SiteInfo
 			_links = new List<Link>();
 		}
 		
-		public void Get()
+		public List<Link> Get()
 		{
-			
+			return _links;
 		}
 		
 	}

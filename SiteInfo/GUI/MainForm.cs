@@ -62,6 +62,27 @@ namespace SiteInfo
 		     };
 		
 		    dgvLinks.Columns.Add(colLink);
+		    
+		    DataGridViewTextBoxColumn colDescription = new DataGridViewTextBoxColumn()
+		    {
+		        CellTemplate = cell, 
+		        Name = "Description",
+		        HeaderText = "Description",
+		        DataPropertyName = "Description" 
+		     };
+		
+		    dgvLinks.Columns.Add(colDescription);
+		    
+		    DataGridViewTextBoxColumn colUrl = new DataGridViewTextBoxColumn()
+		    {
+		        CellTemplate = cell, 
+		        Name = "Url",
+		        HeaderText = "Url",
+		        DataPropertyName = "Url" 
+		     };
+		
+		    dgvLinks.Columns.Add(colUrl);
+		    
 		}
 		
 		
