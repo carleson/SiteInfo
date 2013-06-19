@@ -8,6 +8,7 @@ using System;
 using System.Windows.Forms;
 using System.IO;
 using System.Text;
+using System.Collections.Generic;
 
 namespace SiteInfo
 {
@@ -113,5 +114,44 @@ namespace SiteInfo
 			}
 		}
 			
+		public List<Link> GetLinks(string text)
+		{
+			int startpos = 0;
+			int endpos = 0;
+			
+			try
+			{
+				List<Link> list = new List<Link>();
+				Link _link;
+				
+				while (startpos != -1 && text.Length >= startpos)
+				{
+					startpos = text.IndexOf("<a href=",startpos+1);
+					
+					//Found be beginning of an URL
+					if (startpos != -1)
+					{
+						endpos = text.IndexOf("</a>",startpos+1);
+						
+						if (endpos != -1) 
+						{
+							_link = new Link(text.Substring(startpos,(endpos-startpos)+4));
+							//string url = text.Substring(startpos,(endpos-startpos)+4);
+							list.Add(_link);
+						}
+						
+						startpos++;	                           
+					}
+				}
+							
+			return list;
+				
+			}
+			catch(Exception ex)
+			{
+				MessageBox.Show(ex.ToString());
+				return null;
+			}
+		}
 	}
 }

@@ -6,13 +6,14 @@
  */
 using System;
 using System.Text;
-
+using System.Windows.Forms;
+using System.Collections.Generic;
 namespace SiteInfo
 {
 	/// <summary>
 	/// Description of SiteStatistics.
 	/// </summary>
-	public class SiteStatistics
+	public class SiteStatistics:SiteInfo
 	{
 		private string _htmlOutput;
 		
@@ -37,6 +38,7 @@ namespace SiteInfo
 			sb.AppendLine(string.Format(".jpg-files:{0}",WordCount(".jpg", _htmlOutput)));
 			sb.AppendLine(string.Format("Comments:{0}",WordCount("<!--", _htmlOutput)));
 
+			
 			return sb.ToString();
 		}
 		
@@ -59,6 +61,7 @@ namespace SiteInfo
 			return count;
 		}
 		
+
 		/// <summary>
 		/// Calculates the true size of a string, in bytes
 		/// </summary>

@@ -47,6 +47,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Link.cs" />
     <Compile Include="SiteAnalytics.cs" />
     <Compile Include="MainForm.cs" />
     <Compile Include="MainForm.Designer.cs">
@@ -55,6 +56,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiteInfo.cs" />
+    <Compile Include="SiteLinks.cs" />
     <Compile Include="SiteStatistics.cs" />
     <Compile Include="Util.cs" />
   </ItemGroup>

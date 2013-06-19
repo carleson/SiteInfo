@@ -12,6 +12,9 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Net;
 using System.Text;
+using System.Data;
+using System.ComponentModel;
+using System.Collections.Generic;
 
 namespace SiteInfo
 {
@@ -81,10 +84,8 @@ namespace SiteInfo
 				
 				txtOutput.Text = _htmlOutput;
 				
-
-					
-				GetSiteStatistics();
-				GetSiteAnalytics();
+				Run();
+				
 				util.SetStatus(string.Format("Source:{0}",txtURL.Text));
 				
 			}
@@ -99,16 +100,47 @@ namespace SiteInfo
 			}
 		}
 
-		public void GetSiteStatistics()
+		private void GetSiteLinks()
+		{
+		    dgvLinks.AutoGenerateColumns = false;
+		
+		    //create the column programatically
+		    DataGridViewCell cell = new DataGridViewTextBoxCell();
+		    DataGridViewTextBoxColumn colFileName = new DataGridViewTextBoxColumn()
+		    {
+		        CellTemplate = cell, 
+		        Name = "Value",
+		        HeaderText = "File Name",
+		        DataPropertyName = "Value" // Tell the column which property of FileName it should use
+		     };
+		
+		    dgvLinks.Columns.Add(colFileName);
+		
+		    List<Link> links = site.util.GetLinks(_htmlOutput);
+		    
+		    var filenamesList = new BindingList<Link>(links); // <-- BindingList
+		
+		    dgvLinks.DataSource = filenamesList;
+		}
+		
+		private void GetSiteStatistics()
 		{
 			statistics = new SiteStatistics(_htmlOutput);
 			textStats.Text = statistics.Get();	
 		}
 		
-		public void GetSiteAnalytics()
+		private void GetSiteAnalytics()
 		{
 			analytics = new SiteAnalytics(_htmlOutput);
 			txtAnalyze.Text=analytics.Get();
+		}
+		
+		
+		public void Run()
+		{
+			GetSiteStatistics();
+			GetSiteAnalytics();
+			GetSiteLinks();	
 		}
 		
 		public void LoadFile()
@@ -116,8 +148,7 @@ namespace SiteInfo
 			util.LoadFile(txtOutput);
 			_htmlOutput=txtOutput.Text;
 			
-			GetSiteStatistics();
-			GetSiteAnalytics();
+			Run();
 		}
 		
 #region "Events"

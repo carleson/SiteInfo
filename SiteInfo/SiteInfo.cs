@@ -20,8 +20,11 @@ namespace SiteInfo
 		private string _html;
 		private string _url;
 		
+		public Util util;
+		
 		public SiteInfo()
 		{
+			util = new Util();
 		}
 		
 		public string GetVersion()
