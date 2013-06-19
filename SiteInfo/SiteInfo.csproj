@@ -47,26 +47,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Link.cs" />
-    <Compile Include="SiteAnalytics.cs" />
-    <Compile Include="MainForm.cs" />
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="GUI\MainForm.cs" />
+    <Compile Include="GUI\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SiteInfo.cs" />
-    <Compile Include="SiteLinks.cs" />
-    <Compile Include="SiteStatistics.cs" />
-    <Compile Include="Util.cs" />
+    <Compile Include="Source\Link.cs" />
+    <Compile Include="Source\Program.cs" />
+    <Compile Include="Source\SiteAnalytics.cs" />
+    <Compile Include="Source\SiteInfo.cs" />
+    <Compile Include="Source\SiteLinks.cs" />
+    <Compile Include="Source\SiteStatistics.cs" />
+    <Compile Include="Source\Util.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="GUI\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="GUI" />
+    <Folder Include="Source" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

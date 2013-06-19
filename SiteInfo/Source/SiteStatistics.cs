@@ -13,10 +13,11 @@ namespace SiteInfo
 	/// <summary>
 	/// Description of SiteStatistics.
 	/// </summary>
-	public class SiteStatistics:SiteInfo
+	public class SiteStatistics
 	{
 		private string _htmlOutput;
 		
+			
 		public SiteStatistics(string htmlOutput)
 		{
 			_htmlOutput = htmlOutput;

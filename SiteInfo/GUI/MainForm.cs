@@ -1,6 +1,6 @@
 ﻿/*
  * Created by SharpDevelop.
- * User: a491259
+ * User: Carleson
  * Date: 2013-06-17
  * Time: 09:22
  * 
@@ -14,7 +14,6 @@ using System.Net;
 using System.Text;
 using System.Data;
 using System.ComponentModel;
-using System.Collections.Generic;
 
 namespace SiteInfo
 {
@@ -26,10 +25,9 @@ namespace SiteInfo
 		
 		public string _htmlOutput = string.Empty;
 		public SiteInfo site;
-		public SiteStatistics statistics;
+//		public SiteStatistics statistics;
 		public SiteAnalytics analytics;
-		public Util util;
-		
+		public const string Version = "0.3.3";
 		
 		public MainForm()
 		{
@@ -50,22 +48,21 @@ namespace SiteInfo
 		}
 		
 		public void init()
-		{
-			util = new Util();
-			util.InitStatus(toolStripProgress);
-			
-			site = new SiteInfo();
-			 
-			toolStripStatus.Text = string.Format("SiteInfo version {0}",site.GetVersion());
-			util.SetStatus("Test");
+		{	 
+			SetStatus(string.Format("SiteInfo version {0}",Version));
 		}
 		
 		
+		private void SetStatus(string text)
+		{
+			toolStripProgress.Text=text;
+		}
+				
 		public void GetSiteData()
 		{
 			try
 			{
-				util.SetStatus("loading data...");
+				SetStatus("loading data...");
 				Cursor.Current=Cursors.WaitCursor;
 				
 				txtOutput.Clear();
@@ -81,12 +78,12 @@ namespace SiteInfo
 				{
 				    _htmlOutput = client.DownloadString(txtURL.Text);
 				}
-				
+				site = new SiteInfo(_htmlOutput);
 				txtOutput.Text = _htmlOutput;
 				
 				Run();
 				
-				util.SetStatus(string.Format("Source:{0}",txtURL.Text));
+				SetStatus(string.Format("Source:{0}",txtURL.Text));
 				
 			}
 			catch(Exception ex)
@@ -96,7 +93,7 @@ namespace SiteInfo
 			finally
 			{
 				Cursor.Current=Cursors.Default;
-				util.SetStatus("ready");
+				SetStatus("ready");
 			}
 		}
 
@@ -106,27 +103,27 @@ namespace SiteInfo
 		
 		    //create the column programatically
 		    DataGridViewCell cell = new DataGridViewTextBoxCell();
-		    DataGridViewTextBoxColumn colFileName = new DataGridViewTextBoxColumn()
+		    DataGridViewTextBoxColumn colLink = new DataGridViewTextBoxColumn()
 		    {
 		        CellTemplate = cell, 
 		        Name = "Value",
-		        HeaderText = "File Name",
-		        DataPropertyName = "Value" // Tell the column which property of FileName it should use
+		        HeaderText = "Links",
+		        DataPropertyName = "Value" 
 		     };
 		
-		    dgvLinks.Columns.Add(colFileName);
+		    dgvLinks.Columns.Add(colLink);
 		
 		    List<Link> links = site.util.GetLinks(_htmlOutput);
 		    
-		    var filenamesList = new BindingList<Link>(links); // <-- BindingList
+		    var linkList = new BindingList<Link>(links); 
 		
-		    dgvLinks.DataSource = filenamesList;
+		    dgvLinks.DataSource = linkList;
 		}
 		
 		private void GetSiteStatistics()
 		{
-			statistics = new SiteStatistics(_htmlOutput);
-			textStats.Text = statistics.Get();	
+			//statistics = new SiteStatistics(_htmlOutput);
+			textStats.Text =  site.statistics.Get();	
 		}
 		
 		private void GetSiteAnalytics()
@@ -145,9 +142,11 @@ namespace SiteInfo
 		
 		public void LoadFile()
 		{
-			util.LoadFile(txtOutput);
+			//TODO Fix this !!
+			site = new SiteInfo(txtOutput.Text);
+			string filename = site.util.LoadFileToTextbox(txtOutput);
 			_htmlOutput=txtOutput.Text;
-			
+			SetStatus(string.Format("Loaded:{0}",filename));
 			Run();
 		}
 		
@@ -174,17 +173,20 @@ namespace SiteInfo
 		
 		void TxtOutputDoubleClick(object sender, EventArgs e)
 		{		
-			util.CopyTextFromTextBox(txtOutput);
+			site.util.CopyTextFromTextBox(txtOutput);
+			SetStatus("added text to clipboard");	
 		}
 		
 		void TxtAnalyzeTextChanged(object sender, EventArgs e)
 		{
-			util.CopyTextFromTextBox(txtAnalyze);
+			site.util.CopyTextFromTextBox(txtAnalyze);
+			SetStatus("added text to clipboard");	
 		}
 		
 		void TextStatsTextChanged(object sender, EventArgs e)
 		{
-			util.CopyTextFromTextBox(textStats);
+			site.util.CopyTextFromTextBox(textStats);
+			SetStatus("added text to clipboard");	
 		}
 		
 		void LoadToolStripMenuItemClick(object sender, EventArgs e)
@@ -194,7 +196,7 @@ namespace SiteInfo
 		
 		void SaveToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			util.SaveStringToFile(_htmlOutput);
+			site.util.SaveStringToFile(_htmlOutput);
 		}
 		
 #endregion

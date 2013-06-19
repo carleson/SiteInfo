@@ -12,7 +12,7 @@ namespace SiteInfo
 	/// <summary>
 	/// Description of SiteLinks.
 	/// </summary>
-	public class SiteLinks:SiteInfo
+	public class SiteLinks
 	{
 		
 		public List<Link> _links;

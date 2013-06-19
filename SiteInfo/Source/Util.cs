@@ -37,7 +37,6 @@ namespace SiteInfo
 				
 				txt.SelectAll();
 				Clipboard.SetText(txt.Text);
-				SetStatus("added source to clipboard");	
 				
 			}
 			catch(Exception ex)
@@ -46,10 +45,10 @@ namespace SiteInfo
 			}	
 		}
 		
-		public void SetStatus(string text)
-		{
-			_status.Text=text;
-		}
+//		public void SetStatus(string text)
+//		{
+//			_status.Text=text;
+//		}
 
 		/// <summary>
 		/// Method to save a given string into a file
@@ -84,7 +83,7 @@ namespace SiteInfo
 		/// </summary>
 		/// <param name="textbox"></param>
 		/// <returns></returns>
-		public string LoadFile(TextBox textbox)
+		public string LoadFileToTextbox(TextBox textbox)
 		{
 
 			try
@@ -101,7 +100,6 @@ namespace SiteInfo
 				{
 					string text = File.ReadAllText(openFileDialog1.FileName,Encoding.Default);
 					textbox.Text= text;
-					SetStatus(string.Format("Loaded:{0}",openFileDialog1.FileName));
 					return openFileDialog1.FileName;
 				}
 				
