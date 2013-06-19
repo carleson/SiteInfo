@@ -18,25 +18,18 @@ namespace SiteInfo
 		private const string _version="0.3.3";
 		
 		private string _html;	
-		private Util _util;
 		private SiteStatistics _statistics;
+		private SiteAnalytics _analytics;
 		
 		public SiteInfo(string htmlOutput)
 		{
 			_html = htmlOutput;
 			
-			_util = new Util();
 			_statistics = new SiteStatistics(_html);
+			_analytics = new SiteAnalytics(_html);
 		}
 	
 #region Properies
-	  public Util util
-	    {
-			get
-			{
-			    return this._util;
-			}
-	    }
 	  
 	  public SiteStatistics statistics
 	  {
@@ -45,26 +38,23 @@ namespace SiteInfo
 	  		return this._statistics;
 	  	}
 	  }
+
+	  public SiteAnalytics analytics
+	  {
+	  	get
+	  	{
+	  		return this._analytics;
+	  	}
+	  }
 	  
 	  public string Source
+	  {
+		get
 		{
-			get
-			{
-				return this._html;
-			}
-			set
-			{
-				this._html=value;
-			}
+			return this._html;
 		}
+	  }
 	  		
-	  	public string Version
-		{
-	  		get
-	  		{
-	  			return _version;
-	  		}
-		}
 	  	
 #endregion
 

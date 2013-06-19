@@ -23,10 +23,10 @@ namespace SiteInfo
 	public partial class MainForm : Form
 	{
 		
-		public string _htmlOutput = string.Empty;
+		//public string _htmlOutput = string.Empty;
 		public SiteInfo site;
-//		public SiteStatistics statistics;
-		public SiteAnalytics analytics;
+		public Util util;
+
 		public const string Version = "0.3.3";
 		
 		public MainForm()
@@ -42,14 +42,26 @@ namespace SiteInfo
 			init();
 		}
 		
-		void BtnCheckClick(object sender, EventArgs e)
-		{
-			GetSiteData();
-		}
+
 		
 		public void init()
 		{	 
+			util = new Util();
+			
 			SetStatus(string.Format("SiteInfo version {0}",Version));
+			
+			dgvLinks.AutoGenerateColumns = false;
+		
+		    DataGridViewCell cell = new DataGridViewTextBoxCell();
+		    DataGridViewTextBoxColumn colLink = new DataGridViewTextBoxColumn()
+		    {
+		        CellTemplate = cell, 
+		        Name = "Value",
+		        HeaderText = "Links",
+		        DataPropertyName = "Value" 
+		     };
+		
+		    dgvLinks.Columns.Add(colLink);
 		}
 		
 		
@@ -62,6 +74,8 @@ namespace SiteInfo
 		{
 			try
 			{
+				string _htmlOutput;
+					
 				SetStatus("loading data...");
 				Cursor.Current=Cursors.WaitCursor;
 				
@@ -79,7 +93,7 @@ namespace SiteInfo
 				    _htmlOutput = client.DownloadString(txtURL.Text);
 				}
 				site = new SiteInfo(_htmlOutput);
-				txtOutput.Text = _htmlOutput;
+				txtOutput.Text = site.Source;
 				
 				Run();
 				
@@ -99,21 +113,9 @@ namespace SiteInfo
 
 		private void GetSiteLinks()
 		{
-		    dgvLinks.AutoGenerateColumns = false;
+
 		
-		    //create the column programatically
-		    DataGridViewCell cell = new DataGridViewTextBoxCell();
-		    DataGridViewTextBoxColumn colLink = new DataGridViewTextBoxColumn()
-		    {
-		        CellTemplate = cell, 
-		        Name = "Value",
-		        HeaderText = "Links",
-		        DataPropertyName = "Value" 
-		     };
-		
-		    dgvLinks.Columns.Add(colLink);
-		
-		    List<Link> links = site.util.GetLinks(_htmlOutput);
+		    List<Link> links = util.GetLinks(site.Source);
 		    
 		    var linkList = new BindingList<Link>(links); 
 		
@@ -122,35 +124,38 @@ namespace SiteInfo
 		
 		private void GetSiteStatistics()
 		{
-			//statistics = new SiteStatistics(_htmlOutput);
-			textStats.Text =  site.statistics.Get();	
+			textStats.Text =site.statistics.Get();	
 		}
 		
 		private void GetSiteAnalytics()
 		{
-			analytics = new SiteAnalytics(_htmlOutput);
-			txtAnalyze.Text=analytics.Get();
+			txtAnalyze.Text=site.analytics.Get();
 		}
 		
 		
-		public void Run()
+		private void Run()
 		{
 			GetSiteStatistics();
 			GetSiteAnalytics();
 			GetSiteLinks();	
 		}
 		
-		public void LoadFile()
+		private void LoadFile()
 		{
-			//TODO Fix this !!
+			string filename = util.LoadFileToTextbox(txtOutput);
+			
 			site = new SiteInfo(txtOutput.Text);
-			string filename = site.util.LoadFileToTextbox(txtOutput);
-			_htmlOutput=txtOutput.Text;
 			SetStatus(string.Format("Loaded:{0}",filename));
 			Run();
 		}
 		
 #region "Events"
+
+		void BtnCheckClick(object sender, EventArgs e)
+		{
+			GetSiteData();
+		}
+		
 		void TxtURLKeyPress(object sender, KeyPressEventArgs e)
 		{
 		
@@ -173,19 +178,19 @@ namespace SiteInfo
 		
 		void TxtOutputDoubleClick(object sender, EventArgs e)
 		{		
-			site.util.CopyTextFromTextBox(txtOutput);
+			util.CopyTextFromTextBox(txtOutput);
 			SetStatus("added text to clipboard");	
 		}
 		
 		void TxtAnalyzeTextChanged(object sender, EventArgs e)
 		{
-			site.util.CopyTextFromTextBox(txtAnalyze);
+			util.CopyTextFromTextBox(txtAnalyze);
 			SetStatus("added text to clipboard");	
 		}
 		
 		void TextStatsTextChanged(object sender, EventArgs e)
 		{
-			site.util.CopyTextFromTextBox(textStats);
+			util.CopyTextFromTextBox(textStats);
 			SetStatus("added text to clipboard");	
 		}
 		
@@ -196,14 +201,10 @@ namespace SiteInfo
 		
 		void SaveToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			site.util.SaveStringToFile(_htmlOutput);
+			util.SaveStringToFile(site.Source);
 		}
 		
 #endregion
-
-	
-	
-
 		
 
 	}
