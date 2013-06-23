@@ -17,16 +17,17 @@ namespace SiteInfo
 		//Consts
 		private const string _version="0.3.3";
 		
-		private string _html;	
+		private string _html;
+		private string _url;		
 		private SiteStatistics _statistics;
 		private SiteAnalytics _analytics;
 		
-		public SiteInfo(string htmlOutput)
+		public SiteInfo(string url,string htmlOutput)
 		{
 			_html = htmlOutput;
-			
+			_url = url;
 			_statistics = new SiteStatistics(_html);
-			_analytics = new SiteAnalytics(_html);
+			_analytics = new SiteAnalytics(this);
 		}
 	
 #region Properies
@@ -55,6 +56,17 @@ namespace SiteInfo
 		}
 	  }
 	  		
+	  public string url
+	  {
+	  	get
+	  	{
+	  		return this._url;
+	  	}
+	  	set
+	  	{
+	  		_url=url;	
+	  	}
+	  }
 	  	
 #endregion
 

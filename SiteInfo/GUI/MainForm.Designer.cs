@@ -39,7 +39,7 @@ namespace SiteInfo
 			this.txtURL = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.txtOutput = new System.Windows.Forms.TextBox();
-			this.btnCheck = new System.Windows.Forms.Button();
+			this.btnFetch = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,6 +49,7 @@ namespace SiteInfo
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.actionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.fetchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusFooter = new System.Windows.Forms.StatusStrip();
@@ -63,7 +64,6 @@ namespace SiteInfo
 			this.tabPageLinks = new System.Windows.Forms.TabPage();
 			this.dgvLinks = new System.Windows.Forms.DataGridView();
 			this.tabPageOptions = new System.Windows.Forms.TabPage();
-			this.fetchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.groupBox1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.statusFooter.SuspendLayout();
@@ -106,21 +106,21 @@ namespace SiteInfo
 			this.txtOutput.TabIndex = 2;
 			this.txtOutput.DoubleClick += new System.EventHandler(this.TxtOutputDoubleClick);
 			// 
-			// btnCheck
+			// btnFetch
 			// 
-			this.btnCheck.Location = new System.Drawing.Point(314, 53);
-			this.btnCheck.Margin = new System.Windows.Forms.Padding(2);
-			this.btnCheck.Name = "btnCheck";
-			this.btnCheck.Size = new System.Drawing.Size(68, 23);
-			this.btnCheck.TabIndex = 3;
-			this.btnCheck.Text = "&Check";
-			this.btnCheck.UseVisualStyleBackColor = true;
-			this.btnCheck.Click += new System.EventHandler(this.BtnCheckClick);
+			this.btnFetch.Location = new System.Drawing.Point(386, 27);
+			this.btnFetch.Margin = new System.Windows.Forms.Padding(2);
+			this.btnFetch.Name = "btnFetch";
+			this.btnFetch.Size = new System.Drawing.Size(68, 23);
+			this.btnFetch.TabIndex = 3;
+			this.btnFetch.Text = "&Fetch";
+			this.btnFetch.UseVisualStyleBackColor = true;
+			this.btnFetch.Click += new System.EventHandler(this.BtnFetchClick);
 			// 
 			// groupBox1
 			// 
 			this.groupBox1.Controls.Add(this.txtURL);
-			this.groupBox1.Controls.Add(this.btnCheck);
+			this.groupBox1.Controls.Add(this.btnFetch);
 			this.groupBox1.Controls.Add(this.label1);
 			this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
 			this.groupBox1.Location = new System.Drawing.Point(0, 24);
@@ -197,6 +197,14 @@ namespace SiteInfo
 			this.actionToolStripMenuItem.Name = "actionToolStripMenuItem";
 			this.actionToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
 			this.actionToolStripMenuItem.Text = "&Action";
+			// 
+			// fetchToolStripMenuItem
+			// 
+			this.fetchToolStripMenuItem.Name = "fetchToolStripMenuItem";
+			this.fetchToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
+			this.fetchToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+			this.fetchToolStripMenuItem.Text = "&Fetch";
+			this.fetchToolStripMenuItem.Click += new System.EventHandler(this.FetchToolStripMenuItemClick);
 			// 
 			// helpToolStripMenuItem
 			// 
@@ -347,14 +355,6 @@ namespace SiteInfo
 			this.tabPageOptions.Text = "Options";
 			this.tabPageOptions.UseVisualStyleBackColor = true;
 			// 
-			// fetchToolStripMenuItem
-			// 
-			this.fetchToolStripMenuItem.Name = "fetchToolStripMenuItem";
-			this.fetchToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
-			this.fetchToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.fetchToolStripMenuItem.Text = "&Fetch";
-			this.fetchToolStripMenuItem.Click += new System.EventHandler(this.FetchToolStripMenuItemClick);
-			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -410,9 +410,11 @@ namespace SiteInfo
 		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.GroupBox groupBox1;
-		private System.Windows.Forms.Button btnCheck;
+		private System.Windows.Forms.Button btnFetch;
 		private System.Windows.Forms.TextBox txtOutput;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox txtURL;
+		
+
 	}
 }

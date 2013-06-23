@@ -5,6 +5,7 @@
  * Time: 14:28
  */
 using System;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
 
@@ -15,6 +16,7 @@ namespace SiteInfo
 	/// </summary>
 	public class SiteAnalytics
 	{
+		private SiteInfo _site;
 		private string _htmlOutput;
 		public const string WordPressPattern = "wp-content";
 		public const string DrupalPattern = "drupal.js";
@@ -23,6 +25,7 @@ namespace SiteInfo
 		public const string GoogleAnalyticsPattern = "google-analytics.com";
 		public const string GoogleTagPattern = "googletagservices.com";
 
+		public bool FetchRobots = true;
 		
 		public bool IsWordPress = false;
 		public bool IsDrupal = false;
@@ -32,10 +35,12 @@ namespace SiteInfo
 		public bool IsJavascriptEnabled =false;
 		public bool HasGoogleTag = false;
 		public bool HasGoogleAnalytics = false;
-			
-		public SiteAnalytics(string htmlOutput)
+		
+		
+		public SiteAnalytics(SiteInfo site)
 		{
-			_htmlOutput=htmlOutput;
+			_site = site;
+			_htmlOutput= site.Source;
 		}
 		
 		public string Get()
@@ -63,6 +68,8 @@ namespace SiteInfo
 				if (HasGoogleAnalytics)		sb.AppendLine("Google Analytics Service");
 				if (HasGoogleTag)			sb.AppendLine("Google Tag Service");
 				
+				if (FetchRobots)			sb.AppendLine(GetRobots());
+				
 				return sb.ToString();
 			}
 			
@@ -72,6 +79,23 @@ namespace SiteInfo
 				return string.Empty;
 			}
 		}
-				
+			
+		
+		private string GetRobots()
+		{
+			try
+			{
+				using (WebClient client = new WebClient ()) 
+				{
+					return client.DownloadString(string.Format("{0}/{1}",_site.url, "robots.txt"));
+				}
+
+			}
+			catch(Exception ex)
+			{
+				MessageBox.Show(ex.ToString());
+				return string.Empty;
+			}
+		}
 	}
 }

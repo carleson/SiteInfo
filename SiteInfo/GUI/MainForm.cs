@@ -115,7 +115,7 @@ namespace SiteInfo
 				{
 				    _htmlOutput = client.DownloadString(txtURL.Text);
 				}
-				site = new SiteInfo(_htmlOutput);
+				site = new SiteInfo(txtURL.Text,_htmlOutput);
 				txtOutput.Text = site.Source;
 				
 				Run();
@@ -167,14 +167,14 @@ namespace SiteInfo
 		{
 			string filename = util.LoadFileToTextbox(txtOutput);
 			
-			site = new SiteInfo(txtOutput.Text);
+			site = new SiteInfo(txtURL.Text, txtOutput.Text);
 			SetStatus(string.Format("Loaded:{0}",filename));
 			Run();
 		}
 		
 #region "Events"
 
-		void BtnCheckClick(object sender, EventArgs e)
+		void BtnFetchClick(object sender, EventArgs e)
 		{
 			GetSiteData();
 		}
