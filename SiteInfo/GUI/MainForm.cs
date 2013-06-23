@@ -189,7 +189,7 @@ namespace SiteInfo
 	        }	
 		}
 		
-		void CheckToolStripMenuItemClick(object sender, EventArgs e)
+		void FetchToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			GetSiteData();
 		}
@@ -229,6 +229,5 @@ namespace SiteInfo
 		
 #endregion
 		
-
 	}
 }
