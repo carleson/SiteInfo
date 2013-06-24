@@ -17,7 +17,6 @@ namespace SiteInfo
 	public class SiteAnalytics
 	{
 		private SiteInfo _site;
-		private string _htmlOutput;
 		public const string WordPressPattern = "wp-content";
 		public const string DrupalPattern = "drupal.js";
 		public const string JoomlaPattern = "Joomla!";
@@ -25,7 +24,7 @@ namespace SiteInfo
 		public const string GoogleAnalyticsPattern = "google-analytics.com";
 		public const string GoogleTagPattern = "googletagservices.com";
 
-		public bool FetchRobots = true;
+		public bool FetchRobots = false;
 		
 		public bool IsWordPress = false;
 		public bool IsDrupal = false;
@@ -40,7 +39,6 @@ namespace SiteInfo
 		public SiteAnalytics(SiteInfo site)
 		{
 			_site = site;
-			_htmlOutput= site.Source;
 		}
 		
 		public string Get()
@@ -49,14 +47,14 @@ namespace SiteInfo
 			{
 				StringBuilder sb = new StringBuilder();
 				
-				IsWordPress = _htmlOutput.Contains(WordPressPattern);
-				IsDrupal = _htmlOutput.Contains(DrupalPattern);
-				IsJoomla = _htmlOutput.Contains(JoomlaPattern);
-				IsPolopoly = _htmlOutput.Contains(PolopolyPattern);
+				IsWordPress = _site.Source.Contains(WordPressPattern);
+				IsDrupal = _site.Source.Contains(DrupalPattern);
+				IsJoomla = _site.Source.Contains(JoomlaPattern);
+				IsPolopoly = _site.Source.Contains(PolopolyPattern);
 				
-				IsJavascriptEnabled = _htmlOutput.Contains("text/javascript");
-				HasGoogleAnalytics = _htmlOutput.Contains(GoogleAnalyticsPattern);
-				HasGoogleTag = _htmlOutput.Contains(GoogleTagPattern);
+				IsJavascriptEnabled = _site.Source.Contains("text/javascript");
+				HasGoogleAnalytics = _site.Source.Contains(GoogleAnalyticsPattern);
+				HasGoogleTag = _site.Source.Contains(GoogleTagPattern);
 				
 				//Summary
 				if (IsWordPress) 			sb.AppendLine("Powered by: WordPress");

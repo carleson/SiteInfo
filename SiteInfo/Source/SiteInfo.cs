@@ -14,8 +14,6 @@ namespace SiteInfo
 	/// </summary>
 	public class SiteInfo
 	{
-		//Consts
-		private const string _version="0.3.3";
 		
 		private string _html;
 		private string _url;		
@@ -26,7 +24,7 @@ namespace SiteInfo
 		{
 			_html = htmlOutput;
 			_url = url;
-			_statistics = new SiteStatistics(_html);
+			_statistics = new SiteStatistics(this);
 			_analytics = new SiteAnalytics(this);
 		}
 	

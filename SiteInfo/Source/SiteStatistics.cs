@@ -15,29 +15,28 @@ namespace SiteInfo
 	/// </summary>
 	public class SiteStatistics
 	{
-		private string _htmlOutput;
-		
+		private SiteInfo _site;
 			
-		public SiteStatistics(string htmlOutput)
+		public SiteStatistics(SiteInfo site)
 		{
-			_htmlOutput = htmlOutput;
+			_site = site;
 		}		
 		
 		public string Get()
 		{
-			string statLengh = _htmlOutput.Length.ToString();
+			string statLengh = _site.Source.Length.ToString();
 			
 			StringBuilder sb = new StringBuilder();
 			
 			sb.Append(string.Format("Lenght data:{0}",statLengh));
 			sb.AppendLine();
-			sb.AppendLine(string.Format("Size data:{0} bytes",GetSizeInBytes(_htmlOutput)));
+			sb.AppendLine(string.Format("Size data:{0} bytes",GetSizeInBytes(_site.Source)));
 			
 			//Word count section
-			sb.AppendLine(string.Format("links:{0}",WordCount("<a href=", _htmlOutput)));
-			sb.AppendLine(string.Format(".png-files:{0}",WordCount(".png", _htmlOutput)));
-			sb.AppendLine(string.Format(".jpg-files:{0}",WordCount(".jpg", _htmlOutput)));
-			sb.AppendLine(string.Format("Comments:{0}",WordCount("<!--", _htmlOutput)));
+			sb.AppendLine(string.Format("links:{0}",WordCount("<a href=", _site.Source)));
+			sb.AppendLine(string.Format(".png-files:{0}",WordCount(".png", _site.Source)));
+			sb.AppendLine(string.Format(".jpg-files:{0}",WordCount(".jpg", _site.Source)));
+			sb.AppendLine(string.Format("Comments:{0}",WordCount("<!--", _site.Source)));
 
 			
 			return sb.ToString();
@@ -57,7 +56,7 @@ namespace SiteInfo
 			while (pos != -1 && text.Length >= pos)
 			{
 				count++;
-				pos = _htmlOutput.IndexOf(word,pos+1);
+				pos = _site.Source.IndexOf(word,pos+1);
 			}
 			return count;
 		}

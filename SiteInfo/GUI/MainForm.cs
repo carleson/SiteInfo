@@ -26,6 +26,7 @@ namespace SiteInfo
 		//public string _htmlOutput = string.Empty;
 		public SiteInfo site;
 		public Util util;
+		public Config.SiteInfo config;
 
 		public const string Version = "0.3.3";
 		
@@ -47,6 +48,9 @@ namespace SiteInfo
 		public void init()
 		{	 
 			util = new Util();
+			config = new Config.SiteInfo();
+			
+			config.links.Enabled=false;
 			
 			SetStatus(string.Format("SiteInfo version {0}",Version));
 			
@@ -136,23 +140,24 @@ namespace SiteInfo
 
 		private void GetSiteLinks()
 		{
-
+			if (config.links.Enabled)
+			{
+			    List<Link> links = util.GetLinks(site.Source);
+		    	var linkList = new BindingList<Link>(links); 
 		
-		    List<Link> links = util.GetLinks(site.Source);
-		    
-		    var linkList = new BindingList<Link>(links); 
-		
-		    dgvLinks.DataSource = linkList;
+		    	dgvLinks.DataSource = linkList;			
+			}
 		}
 		
 		private void GetSiteStatistics()
 		{
-			textStats.Text =site.statistics.Get();	
+			
+			if (config.statistics.Enabled) textStats.Text =site.statistics.Get();
 		}
 		
 		private void GetSiteAnalytics()
 		{
-			txtAnalyze.Text=site.analytics.Get();
+			if (config.analytics.Enabled) txtAnalyze.Text=site.analytics.Get();
 		}
 		
 		
