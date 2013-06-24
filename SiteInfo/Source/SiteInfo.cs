@@ -21,6 +21,7 @@ namespace SiteInfo
 		private Config.SiteInfo _config;
 		private SiteStatistics _statistics;
 		private SiteAnalytics _analytics;
+		private SiteLinks _links;
 		
 		public SiteInfo(string url,string htmlOutput, Config.SiteInfo config)
 		{
@@ -28,6 +29,7 @@ namespace SiteInfo
 			_url = url;
 			_statistics = new SiteStatistics(this);
 			_analytics = new SiteAnalytics(this);
+			_links = new SiteLinks(this);
 			
 			if (config != null)
 			{
