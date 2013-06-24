@@ -23,8 +23,6 @@ namespace SiteInfo
 		public const string PolopolyPattern = "polopoly";
 		public const string GoogleAnalyticsPattern = "google-analytics.com";
 		public const string GoogleTagPattern = "googletagservices.com";
-
-		public bool FetchRobots = false;
 		
 		public bool IsWordPress = false;
 		public bool IsDrupal = false;
@@ -41,6 +39,25 @@ namespace SiteInfo
 			_site = site;
 		}
 		
+#region Properties	
+		public bool Enabled
+	  	{
+		  	get
+		  	{
+		  		return _site.config.analytics.Enabled;
+		  	}
+		}
+		
+		public bool FetchRobots
+		{
+			get
+			{
+				return _site.config.analytics.Enabled;
+			}
+		}
+#endregion
+
+#region Methods
 		public string Get()
 		{
 			try
@@ -66,7 +83,7 @@ namespace SiteInfo
 				if (HasGoogleAnalytics)		sb.AppendLine("Google Analytics Service");
 				if (HasGoogleTag)			sb.AppendLine("Google Tag Service");
 				
-				if (FetchRobots)			sb.AppendLine(GetRobots());
+				if (FetchRobots) 			sb.AppendLine(GetRobots());
 				
 				return sb.ToString();
 			}
@@ -95,5 +112,8 @@ namespace SiteInfo
 				return string.Empty;
 			}
 		}
+		
+#endregion
+
 	}
 }

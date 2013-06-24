@@ -6,6 +6,7 @@
  */
 
 using System;
+using SiteInfo.Config;
 
 namespace SiteInfo
 {
@@ -17,15 +18,26 @@ namespace SiteInfo
 		
 		private string _html;
 		private string _url;		
+		private Config.SiteInfo _config;
 		private SiteStatistics _statistics;
 		private SiteAnalytics _analytics;
 		
-		public SiteInfo(string url,string htmlOutput)
+		public SiteInfo(string url,string htmlOutput, Config.SiteInfo config)
 		{
 			_html = htmlOutput;
 			_url = url;
 			_statistics = new SiteStatistics(this);
 			_analytics = new SiteAnalytics(this);
+			
+			if (config != null)
+			{
+				_config=config;
+			}
+			else
+			{
+				_config = new Config.SiteInfo();
+
+			}
 		}
 	
 #region Properies
@@ -53,7 +65,15 @@ namespace SiteInfo
 			return this._html;
 		}
 	  }
-	  		
+	  
+	  public Config.SiteInfo config
+	  {
+		get
+		{
+			return this._config;
+		}
+	  }
+	  
 	  public string url
 	  {
 	  	get

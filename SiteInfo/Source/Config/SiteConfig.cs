@@ -50,6 +50,13 @@ namespace SiteInfo.Config
 		  	}
 	  	}
 		
+		public void Save(string key, string value)
+		{
+			Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+			AppSettingsSection app = config.AppSettings;
+			app.Settings.Add(key, value);
+			config.Save(ConfigurationSaveMode.Modified);
+		}
 	}
 	
 }

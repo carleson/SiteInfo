@@ -6,6 +6,7 @@
  */
 using System;
 using System.Configuration;
+using System.Windows.Forms;
 
 namespace SiteInfo.Config
 {
@@ -18,7 +19,16 @@ namespace SiteInfo.Config
 		
 		public Links()
 		{
-			_enable_links = bool.Parse(ConfigurationManager.AppSettings["enable_links"]);
+			try
+			{
+				var x = ConfigurationManager.AppSettings["enable_links"];	
+				_enable_links = bool.Parse(ConfigurationManager.AppSettings["enable_links"]);	
+			}
+			catch(Exception ex)
+			{
+				MessageBox.Show(ex.ToString());
+			}
+			
 		}
 		
 		public bool Enabled
@@ -30,7 +40,9 @@ namespace SiteInfo.Config
 		  	set
 		  	{
 		  		_enable_links = value;
-		  		ConfigurationManager.AppSettings["enable_links"] = value.ToString();
+//		  		ConfigurationManager.AppSettings["enable_links"] = value.ToString();
+		  		ConfigurationManager.AppSettings.Set("enable_links",value.ToString());
+		  		
 		  	}
 	  	}
 				

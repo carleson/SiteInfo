@@ -22,6 +22,17 @@ namespace SiteInfo
 			_site = site;
 		}		
 		
+#region Properties
+		public bool Enabled
+	  	{
+		  	get
+		  	{
+		  		return _site.config.statistics.Enabled;
+		  	}
+		}
+#endregion
+
+#region Methods
 		public string Get()
 		{
 			string statLengh = _site.Source.Length.ToString();
@@ -76,5 +87,7 @@ namespace SiteInfo
 			return size;
 		}
 		
+#endregion
+
 	}
 }

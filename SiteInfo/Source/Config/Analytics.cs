@@ -16,11 +16,15 @@ namespace SiteInfo.Config
 	/// </summary>
 	public class Analytics
 	{
-		private bool _enable_analytics = false;
+		private bool _enable_analytics;
+		private bool _fetch_robots;
 				
 		public Analytics()
 		{
 			_enable_analytics = bool.Parse(ConfigurationManager.AppSettings["enable_analytics"]);
+			_fetch_robots = bool.Parse(ConfigurationManager.AppSettings["analytics_fetch_robots"]);
+			
+			
 		}
 		
 		public bool Enabled
@@ -34,6 +38,19 @@ namespace SiteInfo.Config
 		  		_enable_analytics = value;
 		  	}
 	  	}
+		
+		public bool FetchRobots
+	  	{
+		  	get
+		  	{
+		  		return this._fetch_robots;
+		  	}
+		  	set
+		  	{
+		  		_fetch_robots = value;
+		  	}
+	  	}
+			
 				
 	}
 }

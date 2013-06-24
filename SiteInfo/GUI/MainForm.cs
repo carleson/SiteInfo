@@ -51,6 +51,7 @@ namespace SiteInfo
 			config = new Config.SiteInfo();
 			
 			config.links.Enabled=false;
+//			config.Save();
 			
 			SetStatus(string.Format("SiteInfo version {0}",Version));
 			
@@ -119,7 +120,7 @@ namespace SiteInfo
 				{
 				    _htmlOutput = client.DownloadString(txtURL.Text);
 				}
-				site = new SiteInfo(txtURL.Text,_htmlOutput);
+				site = new SiteInfo(txtURL.Text,_htmlOutput, config);
 				txtOutput.Text = site.Source;
 				
 				Run();
@@ -172,7 +173,7 @@ namespace SiteInfo
 		{
 			string filename = util.LoadFileToTextbox(txtOutput);
 			
-			site = new SiteInfo(txtURL.Text, txtOutput.Text);
+			site = new SiteInfo(txtURL.Text, txtOutput.Text, config);
 			SetStatus(string.Format("Loaded:{0}",filename));
 			Run();
 		}

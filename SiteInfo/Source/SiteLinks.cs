@@ -14,18 +14,31 @@ namespace SiteInfo
 	/// </summary>
 	public class SiteLinks
 	{
-		
+		private SiteInfo _site;
 		public List<Link> _links;
 		
-		public SiteLinks()
+		public SiteLinks(SiteInfo site)
 		{
+			_site = site;
 			_links = new List<Link>();
 		}
 		
+#region Properties
+		public bool Enabled
+	  	{
+		  	get
+		  	{
+		  		return _site.config.links.Enabled;
+		  	}
+		}
+#endregion
+
+#region Methods
 		public List<Link> Get()
 		{
 			return _links;
 		}
 		
+#endregion
 	}
 }
