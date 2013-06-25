@@ -17,6 +17,8 @@ namespace SiteInfo
 	{
 		private SiteInfo _site;
 			
+		public string name {get;set;}
+		
 		public SiteStatistics(SiteInfo site)
 		{
 			_site = site;

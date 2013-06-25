@@ -17,21 +17,21 @@ namespace SiteInfo
 	public class SiteAnalytics
 	{
 		private SiteInfo _site;
-		public const string WordPressPattern = "wp-content";
-		public const string DrupalPattern = "drupal.js";
-		public const string JoomlaPattern = "Joomla!";
-		public const string PolopolyPattern = "polopoly";
-		public const string GoogleAnalyticsPattern = "google-analytics.com";
-		public const string GoogleTagPattern = "googletagservices.com";
+		private const string WordPressPattern = "wp-content";
+		private const string DrupalPattern = "drupal.js";
+		private const string JoomlaPattern = "Joomla!";
+		private const string PolopolyPattern = "polopoly";
+		private const string GoogleAnalyticsPattern = "google-analytics.com";
+		private const string GoogleTagPattern = "googletagservices.com";
 		
-		public bool IsWordPress = false;
-		public bool IsDrupal = false;
-		public bool IsJoomla =false;
-		public bool IsPolopoly = false;
+		private bool IsWordPress = false;
+		private bool IsDrupal = false;
+		private bool IsJoomla =false;
+		private bool IsPolopoly = false;
 		
-		public bool IsJavascriptEnabled =false;
-		public bool HasGoogleTag = false;
-		public bool HasGoogleAnalytics = false;
+		private bool IsJavascriptEnabled =false;
+		private bool HasGoogleTag = false;
+		private bool HasGoogleAnalytics = false;
 		
 		
 		public SiteAnalytics(SiteInfo site)
