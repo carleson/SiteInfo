@@ -141,6 +141,12 @@ namespace SiteInfo
 			}
 		}
 
+		private void GetSiteText()
+		{
+			textBoxText.Text=site.statistics.GetPlainText();
+			
+		}
+		
 		private void GetSiteLinks()
 		{
 			if (config.links.Enabled)
@@ -169,6 +175,7 @@ namespace SiteInfo
 			GetSiteStatistics();
 			GetSiteAnalytics();
 			GetSiteLinks();	
+			GetSiteText();
 		}
 		
 		private void LoadFile()

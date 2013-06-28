@@ -10,6 +10,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using TextLib.Words;
+using TextLib.Web;
 
 namespace SiteInfo
 {
@@ -40,6 +41,13 @@ namespace SiteInfo
 #endregion
 
 #region Methods
+
+		public string GetPlainText()
+		{
+			Web web = new Web(_site.Source);
+			return web.PlainText;
+			//return web.
+		}
 		public string Get()
 		{
 			string statLengh = _site.Source.Length.ToString();
