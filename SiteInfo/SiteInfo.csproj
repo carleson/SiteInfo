@@ -46,6 +46,9 @@
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="TextLib">
+      <HintPath>Libraries\TextLib.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GUI\MainForm.cs" />
@@ -72,10 +75,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Libraries\TextLib.dll" />
     <None Include="license.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GUI" />
+    <Folder Include="Libraries" />
     <Folder Include="Source" />
     <Folder Include="Source\Config" />
   </ItemGroup>
